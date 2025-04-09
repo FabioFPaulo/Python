@@ -1,0 +1,4 @@
+Bicycle : all(Frame, Gear , opt (Accessory) )
+Gear : one-of(18 , 24 )
+Accessory: more-of(light, bell )
+Frame : one-of(small, medium , big )

@@ -1,0 +1,28 @@
+Actor R "Receptionist"
+
+Node node1 "Schedule Patient Appointment"
+Node node2 "Schedule Patient Hospital Admission"
+Node node3 "Patient Registration"
+
+Association R node1
+Association R node2
+Association R node3
+Extend node3 node1
+Extend node3 node2
+
+Node node4 "Patient Hospital Admission"
+Association R node4
+Include node4 node3
+
+Node node5 "Outpatient Hospital Admission"
+Node node6 "Impatient Hospital Admission"
+Node node7 "Bed Allotment"
+
+Inh node4 node5
+Inh node4 node6
+Include node6 node7
+
+Node node8 "File Insurance Forms / Claims"
+Node node9 "File Medical Reports"
+Association R node8
+Association R node9

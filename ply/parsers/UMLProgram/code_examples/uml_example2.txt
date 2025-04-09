@@ -1,0 +1,49 @@
+Actor User "User"
+Actor Student "Student"
+Actor Staff "Staff"
+Actor Librarian "Librarian"
+Actor Database "Database"
+
+Node Authenticate "Authenticate"
+Node Reserve "Reserve a Book"
+Node RequestNew "Request New Book"
+Node Renew "Renew a Book"
+Node PayFine "Pay Fine"
+Node Feedback "Feedback"
+Node Register "Register New User"
+Node InvalidAuth "Invalid Username or Password"
+Node InvalidRenewal "Invalid Renewal"
+Node FillFeedback "Fill up Feedback Form"
+Node GetLibraryCard "Get Library Card ID"
+Node FillRegister "Fill up Register Form"
+Node AddBook "Add Book Item"
+Node DeleteBook "Delete Book Item"
+Node EditBook "Edit Book Item"
+Node UpdateCatalog "Update Catalog"
+Node OverdueNotif "Send Overdue Notification"
+Node ReserveAvailNotif "Send Reservation Available Notification"
+Node ReserveCancelNotif "Send Reservation Canceled Notification"
+
+Association User Authenticate
+Association User Reserve
+Association User RequestNew
+Association User Renew
+Association User PayFine
+Association User Feedback
+Association User Register
+Include Feedback FillFeedback
+Include Register GetLibraryCard
+Include Register FillRegister
+Extend Authenticate InvalidAuth
+Extend RequestNew InvalidRenewal
+Association Librarian AddBook
+Association Librarian DeleteBook
+Association Librarian EditBook
+Include AddBook UpdateCatalog
+Include DeleteBook UpdateCatalog
+Include EditBook UpdateCatalog
+Association Database OverdueNotif
+Association Database ReserveAvailNotif
+Association Database ReserveCancelNotif
+Inh Student User
+Inh Staff User
