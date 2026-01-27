@@ -1,0 +1,65 @@
+Actors:	5
+Nodes:	19
+Links:	23
+
+
+========================================================
+================PlantUML Code Generator ================
+========================================================
+@startuml top_to_bottom
+skinparam packageStyle rectangle
+left to right direction
+
+actor "User" as User 
+actor "Student" as Student 
+actor "Staff" as Staff 
+actor "Librarian" as Librarian 
+actor "Database" as Database 
+rectangle {
+	"Authenticate" as (Authenticate) 
+	"Reserve a Book" as (Reserve) 
+	"Request New Book" as (RequestNew) 
+	"Renew a Book" as (Renew) 
+	"Pay Fine" as (PayFine) 
+	"Feedback" as (Feedback) 
+	"Register New User" as (Register) 
+	"Invalid Username or Password" as (InvalidAuth) 
+	"Invalid Renewal" as (InvalidRenewal) 
+	"Fill up Feedback Form" as (FillFeedback) 
+	"Get Library Card ID" as (GetLibraryCard) 
+	"Fill up Register Form" as (FillRegister) 
+	"Add Book Item" as (AddBook) 
+	"Delete Book Item" as (DeleteBook) 
+	"Edit Book Item" as (EditBook) 
+	"Update Catalog" as (UpdateCatalog) 
+	"Send Overdue Notification" as (OverdueNotif) 
+	"Send Reservation Available Notification" as (ReserveAvailNotif) 
+	"Send Reservation Canceled Notification" as (ReserveCancelNotif) 
+	 User -- (Authenticate) 
+	 User -- (Reserve) 
+	 User -- (RequestNew) 
+	 User -- (Renew) 
+	 User -- (PayFine) 
+	 User -- (Feedback) 
+	 User -- (Register) 
+	 (Feedback) ..> (FillFeedback) : <<include>>
+	 (Register) ..> (GetLibraryCard) : <<include>>
+	 (Register) ..> (FillRegister) : <<include>>
+	 (Authenticate) <.. (InvalidAuth) : <<extend>>
+	 (RequestNew) <.. (InvalidRenewal) : <<extend>>
+	 Librarian -- (AddBook) 
+	 Librarian -- (DeleteBook) 
+	 Librarian -- (EditBook) 
+	 (AddBook) ..> (UpdateCatalog) : <<include>>
+	 (DeleteBook) ..> (UpdateCatalog) : <<include>>
+	 (EditBook) ..> (UpdateCatalog) : <<include>>
+	 Database -- (OverdueNotif) 
+	 Database -- (ReserveAvailNotif) 
+	 Database -- (ReserveCancelNotif) 
+	 Student <|- User 
+	 Staff <|- User 
+}
+
+@enduml
+========================================================
+

@@ -1,0 +1,40 @@
+Actors:	1
+Nodes:	9
+Links:	12
+
+
+========================================================
+================PlantUML Code Generator ================
+========================================================
+@startuml top_to_bottom
+skinparam packageStyle rectangle
+left to right direction
+
+actor "Receptionist" as R 
+rectangle {
+	"Schedule Patient Appointment" as (node1) 
+	"Schedule Patient Hospital Admission" as (node2) 
+	"Patient Registration" as (node3) 
+	"Patient Hospital Admission" as (node4) 
+	"Outpatient Hospital Admission" as (node5) 
+	"Impatient Hospital Admission" as (node6) 
+	"Bed Allotment" as (node7) 
+	"File Insurance Forms / Claims" as (node8) 
+	"File Medical Reports" as (node9) 
+	 R -- (node1) 
+	 R -- (node2) 
+	 R -- (node3) 
+	 (node3) <.. (node1) : <<extend>>
+	 (node3) <.. (node2) : <<extend>>
+	 R -- (node4) 
+	 (node4) ..> (node3) : <<include>>
+	 (node4) <|- (node5) 
+	 (node4) <|- (node6) 
+	 (node6) ..> (node7) : <<include>>
+	 R -- (node8) 
+	 R -- (node9) 
+}
+
+@enduml
+========================================================
+
