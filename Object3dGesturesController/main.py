@@ -4,8 +4,8 @@ from app.server import SocketServer
 
 
 async def main():
-    camera = CameraHandler()
     server = SocketServer()
+    camera = CameraHandler(server.broadcast)
 
     # Create concurrent tasks
     print("Starting system....")
