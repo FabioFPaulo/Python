@@ -10,14 +10,14 @@ from utils.task import BaseTask
 class CameraHandler(BaseTask):
     def __init__(
         self,
-        broadcast_callback: Callable[[str], str],
+        broadcast_callback: Callable[[str], None] | None,
         cam_idx=0,
     ):
         super().__init__(log_name="CameraHandler", log_path="CameraHandler")
 
         self.bradcast_callback = broadcast_callback
         self.cam_idx = cam_idx
-        self.gestures = Gestures()
+        self.gestures = Gestures(broadcast_callback=self.bradcast_callback)
         self.is_running = False
 
     def _capture(self):
