@@ -17,6 +17,7 @@ class Recognizer:
         ):
             if result.hand_landmarks and len(result.hand_landmarks) > 0:
                 self.hand_landmarks = result.hand_landmarks[0]
+                print(self.hand_landmarks[12])
             else:
                 self.hand_landmarks = []
 
